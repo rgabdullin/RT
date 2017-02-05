@@ -28,7 +28,7 @@ bool Plane::Intersection(const Ray& ray, HitRec& hr) {
 		hr.tmin = t;
 
 		hr.hit_point = ray.origin + t * ray.direction;
-		hr.hit_normal = normal;
+		hr.hit_normal = normalize(normal);
 		hr.ray = ray;
 		hr.material_ptr = material_ptr;
 

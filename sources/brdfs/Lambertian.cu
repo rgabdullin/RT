@@ -23,8 +23,8 @@ float3 Lambertian::f(HitRec* hr, float3& wi, float3& wo) {
 }
 
 __device__
-float3 Lambertian::sample_f(HitRec* hr, float3& wi, float3& wo) {
-	return make_float3(0.0f, 0.0f, 0.0f);
+float3 Lambertian::sample_f(HitRec * hr, float3 & wi, float3 & wo) {
+	return make_float3(0.0f,0.0f,0.0f);
 }
 
 __device__

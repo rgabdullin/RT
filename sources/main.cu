@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
 
 	printInfo();
 
-	int framesize = 128 * 128;
+	int framesize = 256 * 256;
 	if (argc > 1)
 		sscanf(argv[1], "%d", &framesize);
 	start_clock = clock();
@@ -74,10 +74,12 @@ int main(int argc, char** argv) {
 	//Saving image
 	std::stringstream st;
 	time_t now_oclock; time(&now_oclock);
-	st << "./pics/pic" << now_oclock << ".bmp";
+	clock_t now_clock = clock();
+	st << "./pics/pic" << now_oclock << "_" << now_clock % 1000 << ".bmp";
 	char filename[255];
 	st.getline(filename, 255);
-	saveSceneToFile(w, filename);
+	//saveSceneToFile(w, filename);
+	saveSceneToFile(w, "./pics/test.bmp");
 	clearScene(w);
 
 	end_clock = clock();

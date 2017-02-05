@@ -25,7 +25,7 @@ void buildScene_gpu(World * w) {
 	ptr1->init(make_float3(0, -8.0f, 0), make_float3(0, 1, 0), mt1);
 	w->scene_objs[0] = ptr1;
 
-	Matte* mt2 = new Matte(w->pixel_sampler, 0.2f, 0.8f, make_float3(0.8f, 0.05f, 0.05f));
+	Phong* mt2 = new Phong(w->pixel_sampler, 0.3f, 0.8f, 0.1f, 15.0f, make_float3(0.9f, 0.001f, 0.001f));
 	w->scene_materials[1] = mt2;
 	Sphere * ptr2 = new Sphere();
 	ptr2->init(make_float3(0, 0, 0), 4, mt2);
