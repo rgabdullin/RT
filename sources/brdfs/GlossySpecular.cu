@@ -1,6 +1,7 @@
 #include "GlossySpecular.h"
 #include "../Samplers.h"
 #include "../Utils/HitRec.h"
+#include "../Utils/cuda_double_math.h"
 
 /* GlossySpecular */
 
@@ -25,7 +26,7 @@ __device__
 float3 GlossySpecular::f(HitRec* hr, float3& wi, float3& wo) {
 	float3 col = make_float3(0.0f,0.0f,0.0f);
 	float ndotwi = dot(hr->hit_normal, wi);
-	float3 r = -wi + 2.0f * hr->hit_normal * ndotwi;
+	float3 r = -1.0f * wi + 2.0f * hr->hit_normal * ndotwi;
 	float rdotwo = dot(r, wo);
 
 	if(rdotwo > 0.0f)

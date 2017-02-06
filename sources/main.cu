@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
 	World* w;
 	cudaMallocManaged(&w, sizeof(World));
 
-	initWorld(w, 4 * make_int2(512, 256), 4, 16);
+	initWorld(w, 2 * make_int2(1920, 1080), 4, 16);
 	buildScene(w);
 
 	//Tracing

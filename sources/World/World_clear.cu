@@ -25,6 +25,10 @@ void ClearGPU(World *ptr) {
 	delete ptr->ray_tracer;
 	delete ptr->pixel_sampler;
 	delete ptr->ambient_ptr;
+
+	free(ptr->scene_lights);
+	free(ptr->scene_objs);
+	free(ptr->scene_materials);
 }
 
 void clearScene(World *wr) {
@@ -50,12 +54,6 @@ void clearScene(World *wr) {
 	SYNC_AND_CHECK_CUDA_ERRORS;
 
 	ClearGPU <<< 1, 1 >>> (wr);
-	SYNC_AND_CHECK_CUDA_ERRORS;
-
-	cudaFree(wr->scene_materials);
-	cudaFree(wr->scene_lights);
-	cudaFree(wr->scene_objs);
-
 	SYNC_AND_CHECK_CUDA_ERRORS;
 
 	cudaFree(wr);
